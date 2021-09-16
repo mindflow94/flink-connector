@@ -1,0 +1,8 @@
+org\apache\flink\streaming\connectors\mongodb\sink\MongodbBaseSinkFunction.class
+org\apache\flink\streaming\connectors\mongodb\util\ContextUtil.class
+org\apache\flink\streaming\connectors\mongodb\MongodbConf.class
+org\apache\flink\streaming\connectors\mongodb\sink\MongodbDynamicTableSink.class
+org\apache\flink\streaming\connectors\mongodb\sink\MongodbUpsertSinkFunction.class
+org\apache\flink\streaming\connectors\mongodb\MongodbDynamicTableSinkFactory.class
+org\apache\flink\streaming\connectors\mongodb\util\FactoryOptionUtil.class
+org\apache\flink\streaming\connectors\mongodb\sink\MongodbSinkConf.class
