@@ -8,7 +8,7 @@
 
 ## 代码示例
 
-> 完整代码，可以参考 [flink-connector-mongodb](),本文仅给出示例。
+> 完整代码，可以参考 [flink-connector-mongodb](https://github.com/mindflow94/flink-connector),本文仅给出示例。
 
 - pom文件
 
