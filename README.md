@@ -1,6 +1,6 @@
 # Flink SQL Connector 开发示例
 
-> 开发 Flink 官方未提供的 sql-connector
+> 开发 Flink 官方未提供的 sql-connector，其中 MongoDB Connector 参考 **[Ververica](https://developer.aliyun.com/article/724113)**，Redis Connector 参考 **[bahir-flink](https://github.com/apache/bahir-flink)**，由于此 Connector 实现了弃用的接口，故做了重新实现。
 
 ## 参考
 
