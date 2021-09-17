@@ -11,6 +11,7 @@
     <modules>
         <module>flink-connector-mongodb</module>
         <module>test-flink-connector</module>
+        <module>flink-connector-redis</module>
     </modules>
 
     <properties>

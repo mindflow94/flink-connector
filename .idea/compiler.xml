@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="flink-connector-mongodb_2.11" />
         <module name="test-flink-connector" />
+        <module name="flink-connector-redis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
