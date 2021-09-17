@@ -32,7 +32,7 @@ public class Datagen2Mongodb {
                 "  'connector' = 'mongodb',\n" +
                 "  'database'='mongoDBTest',\n" +
                 "  'collection'='flink_test',\n" +
-                "  'uri'='mongodb://hzy:hzy@172.0.0.1:27017/?authSource=mongoDBTest',\n" +
+                "  'uri'='mongodb://user:passeord@172.0.0.1:27017/?authSource=mongoDBTest',\n" +
                 "  'maxConnectionIdleTime'='20000',\n" +
                 "  'batchSize'='1'\n" +
                 ")";

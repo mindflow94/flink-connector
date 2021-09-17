@@ -3,14 +3,14 @@
 ## 背景
 
 * 因公司业务发展，需要将大量数据通过 Flink SQL 推送到 MongoDB 中，目前 Flink 官方并未相应的 Connector 可以使用，网上也未找到完整的开发代码。
-* [bahir-flink](https://github.com/apache/bahir-flink) 上维护了很多 Flink 官方没有的 Connector，如果需要自定义连接器开发，可以先参考此代码库。
-* [Ververica](https://developer.aliyun.com/article/724113) 作为阿里云 Flink 企业版，也维护了大量的 Connector，可以通过查看 [Ververica-Connector](https://mvnrepository.com/search?q=Ververica) 的 maven 仓库，获取相应的 Connector。不过，此 Connector 会有一些自定义日志采集、运行 Metrics 采集等相关逻辑，需自行更改。本文基于此进行修改。
+* **[bahir-flink](https://github.com/apache/bahir-flink)** 上维护了很多 Flink 官方没有的 Connector，如果需要自定义连接器开发，可以先参考此代码库。
+* **[Ververica](https://developer.aliyun.com/article/724113)** 作为阿里云 Flink 企业版，也维护了大量的 Connector，可以通过查看 **[Ververica-Connector](https://mvnrepository.com/search?q=Ververica)** 的 maven 仓库，获取相应的 Connector。不过，此 Connector 会有一些自定义日志采集、运行 Metrics 采集等相关逻辑，需自行更改。本文基于此进行修改。
 
 ## 代码示例
 
-> 完整代码，可以参考 [flink-connector-mongodb](https://github.com/mindflow94/flink-connector),本文仅给出示例。
+> 完整代码，可以参考 **[flink-connector-mongodb](https://github.com/mindflow94/flink-connector)** ，本文仅给出示例。
 
-- pom文件
+- **pom文件**
 
 ```.xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -131,7 +131,7 @@
 </project>
 ```
 
-- MongodbSinkFunction 建立连接，插入数据
+- **MongodbSinkFunction 建立连接，插入数据**
 
 ```.java
 public abstract class MongodbBaseSinkFunction<IN> extends RichSinkFunction<IN> implements CheckpointedFunction {
@@ -226,7 +226,7 @@ public class MongodbUpsertSinkFunction extends MongodbBaseSinkFunction<RowData> 
 }
 ```
 
-- MongodbDynamicTableSink 获取 Schema 信息、数据结构转换器
+- **MongodbDynamicTableSink 获取 Schema 信息、数据结构转换器**
 
 ```.java
 public class MongodbDynamicTableSink implements DynamicTableSink {
@@ -263,7 +263,7 @@ public class MongodbDynamicTableSink implements DynamicTableSink {
 }
 ```
 
-- MongodbDynamicTableSinkFactory 参数定义、校验
+- **MongodbDynamicTableSinkFactory 参数定义、校验**
 
 ```.java
 public class MongodbDynamicTableSinkFactory implements DynamicTableSinkFactory {
@@ -331,7 +331,7 @@ public class MongodbDynamicTableSinkFactory implements DynamicTableSinkFactory {
 }
 ```
 
-- [SPI](https://cloud.tencent.com/developer/article/1475801) 机制动态加载插件
+- **[SPI](https://cloud.tencent.com/developer/article/1475801)** 机制动态加载插件
 
 ```
 // 在 resources 目录下新建 META-INF.services 目录
@@ -341,7 +341,7 @@ org.apache.flink.table.factories.Factory
 org.apache.flink.streaming.connectors.mongodb.MongodbDynamicTableSinkFactory
 ```
 
-- 参数说明
+- **参数说明**
 
 <table class="table table-bordered" style="width: 95%">
     <thead>
@@ -374,7 +374,7 @@ org.apache.flink.streaming.connectors.mongodb.MongodbDynamicTableSinkFactory
       </tbody>
 </table>
 
-- 调试
+- **调试**
 
 ```.java
     public static void main(String args[]) {
@@ -476,6 +476,19 @@ org.apache.flink.streaming.connectors.mongodb.MongodbDynamicTableSinkFactory
             <version>${flink.version}</version>
         </dependency>
     </dependencies>
+```
+
+- **使用**
+
+```
+1. API 方式，引入 pom 依赖即可
+<dependency>
+    <groupId>org.example</groupId>
+    <artifactId>flink-connector-mongodb_${scala.binary.version}</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+2. SQL 客户端方式，执行以下命令打包，将jar包放置到lib目录下
+mvn clean install
 ```
 
 ## 参考
